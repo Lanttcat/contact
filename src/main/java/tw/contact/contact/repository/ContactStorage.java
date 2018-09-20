@@ -24,4 +24,12 @@ public class ContactStorage {
     public static Contact get(int key) {
         return CONTACTS.get(key);
     }
+
+    public static void put(int id, Contact contact) {
+        CONTACTS.put(id, contact);
+    }
+
+    public static void delete(int contactId) {
+        CONTACTS.remove(contactId);
+    }
 }
