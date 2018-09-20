@@ -8,7 +8,10 @@ import org.junit.Test;
 import org.springframework.http.MediaType;
 import org.springframework.test.web.servlet.MockMvc;
 import tw.contact.contact.domain.Contact;
+import tw.contact.contact.repository.ContactStorage;
+import tw.contact.contact.repository.UserStorage;
 
+import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 import static org.springframework.test.web.servlet.setup.MockMvcBuilders.standaloneSetup;
@@ -28,5 +31,8 @@ public class UserControllerTest {
                 .contentType(MediaType.APPLICATION_JSON_UTF8)
                 .content(new ObjectMapper().writeValueAsString(contact)))
                 .andExpect(status().isCreated());
+
+        assertEquals(1, ContactStorage.size());
+        assertEquals(1, UserStorage.get(1).getContacts().size());
     }
 }

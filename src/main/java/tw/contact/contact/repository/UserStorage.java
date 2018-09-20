@@ -12,10 +12,7 @@ public class UserStorage {
         USERS.put(1, new User(1, "lan"));
         USERS.put(2, new User(2, "yi"));
     }
-    public static User createContact(int userId, Contact contact) {
-        User updateUser = USERS.get(userId);
-        updateUser.getContacts().put(contact.getName(), contact);
-
-        return updateUser;
+    public static User get(int id) {
+        return USERS.get(id);
     }
 }

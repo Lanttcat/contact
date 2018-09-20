@@ -33,6 +33,10 @@ public class Contact {
         this.name = name;
     }
 
+    public void setId(int id) {
+        this.id = id;
+    }
+
     public Contact(int id, String name, int age, String string, String phone) {
         this.id = id;
         this.name = name;

@@ -5,6 +5,10 @@ import java.util.List;
 import java.util.Map;
 
 public class User {
+    public Map<String, Contact> getContacts() {
+        return contacts;
+    }
+
     private int id;
     private String name;
 
@@ -22,10 +26,6 @@ public class User {
 
     public String getName() {
         return name;
-    }
-
-    public Map<String, Contact> getContacts() {
-        return contacts;
     }
 
     public void setContacts(Map<String, Contact> contacts) {
