@@ -35,4 +35,9 @@ public class UserController {
     public void deleteContact(@PathVariable int userId, @RequestBody Contact contact) {
         userRepository.deleteContact(userId, contact);
     }
+    @GetMapping(value = "/userss")
+    public ResponseEntity<Contact> getOneContact(@RequestParam String userName, @RequestParam String contactName) {
+        return new ResponseEntity<>(userRepository.getOneContact(userName, contactName), HttpStatus.OK);
+    }
+
 }

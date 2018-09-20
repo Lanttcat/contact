@@ -36,7 +36,7 @@ public class UserControllerTest {
                 .andExpect(status().isCreated());
 
         assertEquals(1, ContactStorage.size());
-        assertEquals(3, UserStorage.get(1).getContacts().size());
+        assertEquals(2, UserStorage.get(1).getContacts().size());
     }
 
     @Test
@@ -58,7 +58,6 @@ public class UserControllerTest {
                 .andExpect(status().isAccepted())
                 .andExpect(jsonPath("$.name").value("lan1"))
                 .andExpect(jsonPath("$.id").value(1));
-//                .andExpect(jsonPath("$.contact[0]").value(2));
     }
 
     @Test
@@ -70,5 +69,15 @@ public class UserControllerTest {
                 .andExpect(status().isNoContent());
         assertEquals(1, ContactStorage.size());
         assertEquals(null, UserStorage.get(1).getContacts().get("lan2"));
+    }
+
+    @Test
+    public void should_get_one_contact_by_user_id_and_contact_name() throws Exception {
+        mockMvc.perform(get("/api/userss")
+                .param("userName", "lan1")
+                .param("contactName", "lan1"))
+                .andExpect(status().isOk())
+                .andExpect(jsonPath("$.name").value("lan1"))
+                .andExpect(jsonPath("$.sex").value("man"));
     }
 }

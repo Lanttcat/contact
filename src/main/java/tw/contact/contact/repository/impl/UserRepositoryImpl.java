@@ -6,8 +6,10 @@ import tw.contact.contact.repository.ContactStorage;
 import tw.contact.contact.repository.UserRepository;
 import tw.contact.contact.repository.UserStorage;
 
+import java.util.Collection;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.concurrent.atomic.AtomicReference;
 
 public class UserRepositoryImpl implements UserRepository{
     ContactRepositoryImpl contactRepository = new ContactRepositoryImpl();
@@ -42,5 +44,19 @@ public class UserRepositoryImpl implements UserRepository{
         int contactId = user.getContacts().get(contact.getName());
         user.getContacts().remove(contact.getName());
         ContactStorage.delete(contactId);
+    }
+
+    @Override
+    public Contact getOneContact(String userName, String contactName) {
+        Collection<User> users= UserStorage.findAll();
+        AtomicReference<User> user = new AtomicReference<>(new User());
+        users.forEach(item -> {
+            if (item.getName() == userName) {
+                user.set(item);
+            }
+        });
+
+        Integer id = user.get().getContacts().get(contactName);
+        return ContactStorage.get(id);
     }
 }

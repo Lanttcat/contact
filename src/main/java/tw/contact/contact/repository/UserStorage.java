@@ -4,6 +4,7 @@ import org.springframework.http.ResponseEntity;
 import tw.contact.contact.domain.Contact;
 import tw.contact.contact.domain.User;
 
+import java.util.Collection;
 import java.util.HashMap;
 
 public class UserStorage {
@@ -19,5 +20,9 @@ public class UserStorage {
     }
     public static User get(int id) {
         return USERS.get(id);
+    }
+
+    public static Collection<User> findAll() {
+        return USERS.values();
     }
 }

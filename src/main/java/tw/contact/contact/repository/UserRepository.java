@@ -13,4 +13,6 @@ public interface UserRepository {
     public User updateContact(int userId, Contact contact);
 
     void deleteContact(int userId, Contact contact);
+
+    Contact getOneContact(String userName, String contactName);
 }

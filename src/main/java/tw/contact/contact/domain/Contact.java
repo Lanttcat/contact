@@ -4,7 +4,7 @@ public class Contact {
     private int id;
     private String name;
     private int age;
-    private String string;
+    private String sex;
 
     public Contact() {
     }
@@ -21,8 +21,8 @@ public class Contact {
         return age;
     }
 
-    public String getString() {
-        return string;
+    public String getSex() {
+        return sex;
     }
 
     public String getPhone() {
@@ -37,11 +37,11 @@ public class Contact {
         this.id = id;
     }
 
-    public Contact(int id, String name, int age, String string, String phone) {
+    public Contact(int id, String name, int age, String sex, String phone) {
         this.id = id;
         this.name = name;
         this.age = age;
-        this.string = string;
+        this.sex = sex;
         this.phone = phone;
     }
 
