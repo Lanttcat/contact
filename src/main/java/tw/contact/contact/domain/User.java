@@ -5,12 +5,10 @@ import java.util.List;
 import java.util.Map;
 
 public class User {
-    public Map<String, Contact> getContacts() {
-        return contacts;
-    }
-
     private int id;
+
     private String name;
+    private Map<String, Integer> contacts = new HashMap<>();
 
     public User() {
     }
@@ -28,11 +26,11 @@ public class User {
         return name;
     }
 
-    public void setContacts(Map<String, Contact> contacts) {
+    public void setContacts(Map<String, Integer> contacts) {
         this.contacts = contacts;
     }
 
-    private Map<String, Contact> contacts = new HashMap<>();
-
-
+    public Map<String, Integer> getContacts() {
+        return contacts;
+    }
 }
