@@ -5,6 +5,7 @@ public class Contact {
     private String name;
     private int age;
     private String sex;
+    private String phone;
 
     public Contact() {
     }
@@ -45,5 +46,4 @@ public class Contact {
         this.phone = phone;
     }
 
-    private String phone;
 }

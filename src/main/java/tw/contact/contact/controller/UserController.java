@@ -15,28 +15,28 @@ import java.util.Map;
 @RestController
 public class UserController {
     UserRepositoryImpl userRepository =  new UserRepositoryImpl();
-    @PostMapping(value = "/users/{userId}")
+    @PostMapping(value = "/users/{userId}/contact")
     public ResponseEntity<User> createContactById(@PathVariable int userId, @RequestBody Contact contact) {
         return new ResponseEntity<>(userRepository.createContactByUserId(userId, contact), HttpStatus.CREATED);
     }
 
-    @GetMapping(value = "/users")
-    public ResponseEntity<Map<String, Contact>> getContactListByUserId(@RequestParam int id) {
-        return new ResponseEntity<>(userRepository.getContacts(id), HttpStatus.OK);
+    @GetMapping(value = "/users/{userId}/contact")
+    public ResponseEntity<Map<String, Contact>> getContactListByUserId(@PathVariable int userId) {
+        return new ResponseEntity<>(userRepository.getContacts(userId), HttpStatus.OK);
     }
 
-    @PutMapping(value = "users/{userId}")
+    @PutMapping(value = "users/{userId}/contact")
     public ResponseEntity<User> updateContact(@PathVariable int userId, @RequestBody Contact contact) {
         return new ResponseEntity<>(userRepository.updateContact(userId, contact), HttpStatus.ACCEPTED);
     }
 
-    @DeleteMapping(value = "/users/{userId}")
+    @DeleteMapping(value = "/users/{userId}/contact")
     @ResponseStatus(HttpStatus.NO_CONTENT)
     public void deleteContact(@PathVariable int userId, @RequestBody Contact contact) {
         userRepository.deleteContact(userId, contact);
     }
-    @GetMapping(value = "/userss")
-    public ResponseEntity<Contact> getOneContact(@RequestParam String userName, @RequestParam String contactName) {
+    @GetMapping(value = "/users/{userName}/contact/{contactName}")
+    public ResponseEntity<Contact> getOneContact(@PathVariable String userName, @PathVariable String contactName) {
         return new ResponseEntity<>(userRepository.getOneContact(userName, contactName), HttpStatus.OK);
     }
 

@@ -4,6 +4,7 @@ import org.springframework.http.ResponseEntity;
 import tw.contact.contact.domain.Contact;
 import tw.contact.contact.domain.User;
 
+import java.util.Arrays;
 import java.util.Collection;
 import java.util.HashMap;
 
@@ -24,5 +25,15 @@ public class UserStorage {
 
     public static Collection<User> findAll() {
         return USERS.values();
+    }
+
+    public static void clear() {
+        USERS.clear();
+    }
+
+    public static void add(User... users) {
+        Arrays.stream(users).forEach(user -> {
+            USERS.put(user.getId(), user);
+        });
     }
 }

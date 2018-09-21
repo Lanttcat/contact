@@ -32,4 +32,8 @@ public class ContactStorage {
     public static void delete(int contactId) {
         CONTACTS.remove(contactId);
     }
+
+    public static void clear() {
+        CONTACTS.clear();
+    }
 }

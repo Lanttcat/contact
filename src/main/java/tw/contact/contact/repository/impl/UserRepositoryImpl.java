@@ -51,7 +51,7 @@ public class UserRepositoryImpl implements UserRepository{
         Collection<User> users= UserStorage.findAll();
         AtomicReference<User> user = new AtomicReference<>(new User());
         users.forEach(item -> {
-            if (item.getName() == userName) {
+            if (item.getName().equals(userName)) {
                 user.set(item);
             }
         });
